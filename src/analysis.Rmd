@@ -1,7 +1,6 @@
 ---
 title: "Predicting Heart Disease"
 output:
-  html_notebook: default
   html_document: default
 ---
 
@@ -73,5 +72,12 @@ varImpPlot(fit)
 
 ```{r}
 partialPlot(fit, heart_clean, "Ca")
+```
+
+
+# Session Info
+
+```{r}
+sessionInfo()
 ```
 
