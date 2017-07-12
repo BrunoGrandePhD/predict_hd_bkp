@@ -1,0 +1,36 @@
+---
+title: "Tidying Data"
+author: "Bruno Grande"
+date: '2017-07-12'
+output: html_document
+---
+
+# Load Packages
+
+```{r}
+library(tidyverse)
+```
+
+
+# Load and Tidy Data
+
+The raw data includes the row numbers, which need to be removed. 
+Moreover, the random forest model does not handle missing values,
+so I need to remove any before training the model. Here, I am using
+tidyr's `drop_na` to this effect. 
+
+```{r}
+heart_raw <- read.csv("../data/raw_data/Heart.csv")
+
+heart_clean <- select(heart_raw, -X)
+
+heart_clean <- drop_na(heart_clean)
+
+write.csv(heart_clean, "../data/clean_data/heart.clean.csv")
+```
+
+# Session Info
+
+```{r}
+sessionInfo()
+```

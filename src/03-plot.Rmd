@@ -1,0 +1,50 @@
+---
+title: "Plot Results"
+author: "Bruno Grande"
+date: '2017-07-12'
+output: html_document
+---
+
+# Load Packages
+
+```{r}
+library(randomForest)
+```
+
+
+# Interpret Results
+
+## Fit performance
+
+```{r}
+fit <- readRDS("../results/random_forest_fit.rds")
+
+heart_clean <- read.csv("../data/clean_data/heart.clean.csv")
+
+print(fit)
+```
+
+```{r}
+plot(fit)
+```
+
+
+## Variable importance
+
+```{r}
+varImpPlot(fit)
+```
+
+
+## Effect of calcium on outcome
+
+```{r}
+partialPlot(fit, heart_clean, "Ca")
+```
+
+
+# Session Info
+
+```{r}
+sessionInfo()
+```

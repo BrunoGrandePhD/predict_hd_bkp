@@ -4,3 +4,4 @@
 .Ruserdata
 data/clean_data
 *.html
+src/_site

@@ -1,0 +1,41 @@
+---
+title: "Train Model"
+author: "Bruno Grande"
+date: '2017-07-12'
+output: html_document
+---
+
+# Load Packages
+
+```{r}
+library(randomForest)
+```
+
+# Train Random Forest
+
+## Split training and test cohorts
+
+```{r}
+heart_clean <- read.csv("../data/clean_data/heart.clean.csv")
+
+train <- sample(1:nrow(heart_clean), nrow(heart_clean) * 0.7)
+
+test <- -train
+```
+
+## Train random forest model
+
+```{r}
+fit <- randomForest(AHD ~ ., data = heart_clean, subset = train, 
+                    importance = TRUE, keep.forest = TRUE,
+                    xtest = heart_clean[test, -ncol(heart_clean)],
+                    ytest = heart_clean[test, "AHD"])
+
+saveRDS(fit, "../results/random_forest_fit.rds")
+```
+
+# Session Info
+
+```{r}
+sessionInfo()
+```

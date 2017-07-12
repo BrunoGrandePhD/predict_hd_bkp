@@ -1,0 +1,10 @@
+name: predict_hd
+navbar:
+  title: "Predicting Heart Disease"
+  left:
+    - text: "Tidy"
+      href: "01-tidy.html"
+    - text: "Train"
+      href: "02-train.html"
+    - text: "Plot"
+      href: "03-plot.html"
